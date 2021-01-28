@@ -1,0 +1,1 @@
+from record.models import Record
