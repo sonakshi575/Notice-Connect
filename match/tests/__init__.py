@@ -1,1 +1,1 @@
-from .models import *
+from match.models import Match

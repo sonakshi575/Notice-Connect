@@ -15,5 +15,5 @@ class TestModels(TestCase):
 
     def test_record_str(self):
         """Test the notice string representation"""
-        self.assertEqual(str(self.record),"John Smith")
+        self.assertEqual(str(self.record.first_name),"John")
         
