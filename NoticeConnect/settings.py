@@ -40,7 +40,15 @@ INSTALLED_APPS = [
     'notice',
     'match',
     'record',
+    'rest_framework',
 ]
+
+REST_FRAMEWORK = {
+    'DATE_INPUT_FORMATS':  ["%Y-%m-%d"],
+    'DATE_FORMAT':  ["%Y-%m-%d"],
+    # 'DEFAULT_PERMISSION_CLASSES' : ('rest_framework.permissions.IsAuthenticated',)
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -133,3 +141,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static/'),
+)

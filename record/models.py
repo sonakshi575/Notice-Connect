@@ -16,5 +16,5 @@ class Record(models.Model):
         verbose_name_plural = 'Records'
 
 
-    def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+    # def __str__(self):
+    #     return f"{self.first_name} {self.last_name}"
