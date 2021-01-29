@@ -1,0 +1,97 @@
+<!--invenias/templates/dashboard.html-->
+{% extends './../base.html' %}
+{% load static %}
+{% block content %}
+  <div class="container-fluid" style="position: fixed;top: 80px;left: 0;right: 0;bottom: 0;overflow-y: scroll;" id="applications">
+        <div class="row" style="width: inherit;">
+        <div class="col" style="height: 50px;">
+            <!-- Dummy Row for padding -->
+        </div>
+        
+    </div>
+        <div class="row" style="width: inherit;">
+        <div class="col-lg-10 col-md-12 mx-auto">
+                <h2 style="font-size:25px;font-weight: bold;font-family:Varela Round;float:left;color:#002b50;margin-left:400px;margin-bottom: 25px;;">
+                   Create Record
+                </h2>
+            </div>
+        </div>
+
+        <div class="row" style="width: inherit;">
+       <div class="col-lg-6 mx-auto rounded shadow text-center" style="height:400px;padding-top: 20px;">
+        <div class="card-body">
+          <form  action="{% url 'create_record' %}" method="post"  enctype="multipart/form-data">
+             {% csrf_token %}
+          <div class="form-row col-lg-9 mx-auto text-left" style="font-family:Varela Round;font-size: 15px;">
+          <div class="col-sm-4">
+          <label for="myfile">First Name *</label>
+          </div>
+              <!-- <input type="file" id="myfile" name="myfile"> -->
+                <div class="col-sm-4">
+              {{ record.first_name }}
+              </div>
+            </div>
+          <br/>
+                    
+          <div class="form-row col-lg-9 mx-auto text-left" style="font-family:Varela Round;font-size: 15px;">
+             <div class="col-sm-4">
+              <label for="myfile">Last Name *</label>
+              </div>
+              <div class="col-sm-4">
+              <!-- <input type="file" id="myfile" name="myfile"> -->
+              {{ record.last_name }}
+              </div>
+            </div>
+             <br/>
+             <div class="form-row col-lg-9 mx-auto text-left" style="font-family:Varela Round;font-size: 15px;">
+              <div class="col-sm-4">
+                <label for="myfile">Province</label>
+                </div>
+              <!-- <input type="file" id="myfile" name="myfile"> -->
+                <div class="col-sm-4">
+              {{ record.province }}
+              </div>
+            </div>
+       
+              <br/>
+             <div class="form-row col-lg-9 mx-auto text-left" style="font-family:Varela Round;font-size: 15px;">
+              <div class="col-sm-4">
+              <label for="myfile">Date of Birth</label>
+              </div>
+              <!-- <input type="file" id="myfile" name="myfile"> -->
+                <div class="col-sm-4">
+              {{ record.date_of_birth }}
+              </div>
+            </div>
+              <br/>
+              <br/>
+             <div class="form-row col-lg-9 mx-auto text-left" style="padding-left:100px;font-family:Varela Round;font-size: 15px;">
+              <div class="col-sm-12" style="margin-left:50px;">
+              <button type="submit" style="width:10vw;align-self:center;background-color:#a4232c;border-color: #a4232c;"class="btn btn-primary">Save</button>
+            </div>
+            </div>
+
+          </form>
+        </div>
+  
+    </div>
+</div> 
+</div>
+
+  <!-- </div> -->
+  {% endblock %}
+  <!-- jQuery for Bootstrap's JavaScript plugins -->
+  <!-- <script src="{% static "js/jquery-2.1.1.min.js" %}" ></script>
+  <script src="{% static "js/bootstrap.min.js" %}"></script>
+  <script src="{% static "js/wow.min.js" %}"></script>
+  <script src="{% static "js/fancybox/jquery.fancybox.pack.js" %}" ></script>
+  <script src="{% static "js/jquery.easing.1.3.js" %}"></script>
+  <script src="{% static "js/jquery.bxslider.min.js" %}" ></script>
+  <script src="{% static "js/jquery.prettyPhoto.js" %}"></script>
+  <script src="{% static "js/jquery.isotope.min.js" %}"></script>
+  <script src="{% static "js/functions.js" %}"></script>
+  <script>
+    wow = new WOW({}).init();
+  </script>
+</body>
+</html> -->

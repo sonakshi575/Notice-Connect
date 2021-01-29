@@ -1,0 +1,79 @@
+{% extends './../base.html' %}
+{% comment %} {% load static %} {% endcomment %}
+{% block content %}
+
+  <div class="container-fluid" style="position: fixed;top: 80px;left: 0;right: 0;bottom: 0;overflow-y: scroll;" id="applications">
+        <div class="row" style="width: inherit;">
+                          <div class="btn-group" role="group">
+        <div class="col" style="width: 100vw;height: 10px;padding-bottom:50px;padding-top: 20px;">
+                      
+                <h2 style=" width:90vw;text-align: center;font-size:25px;font-weight: bold;font-family:Varela Round;float:left;color:#002b50;">
+                    Records List
+                </h2>
+             
+        </div>
+    </div>
+    <div class="card-body">
+            <div class="row" style="width: inherit;" style="margin-left: 10px;margin-right: 10px;">
+                <div class="col-md-10 mx-auto rounded shadow text-center">
+                   
+                            <table class="table table-striped"  style="margin-left: 0px;margin-right: 0px;padding-top:10px">
+                                <thead>
+                                    <tr style="color: white;background-color:#002b50;">
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">Record Id
+                                        </th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">First Name
+                                        </th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                           Last Name</th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                            Province</th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                            Date of Birth</th>
+                                        
+                                        <th class="text-uppercase" style="font-family:Varela Round;font-size: 12px;width:300px;" scope="col">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for record in records  %}
+                                    <tr>
+                                    <td class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;">
+                                            {{ record.record_id }}</td>
+                                        <td class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;">
+                                            {{ record.first_name }}</td>
+
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                            {{ record.last_name }}</td>
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                             {{ record.province }}
+                                        </td>
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                             {{ record.date_of_birth }}
+                                        </td>
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                            <div class="btn-group" role="group">
+<a class='edit' style="color:#a4232c;padding:5px;" title="Delete"
+                                data-toggle="tooltip" href="{% url "record:delete_record" record.record_id %}">
+                                <i class="material-icons">delete</i>
+                            </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    
+</div>
+{% endblock %}

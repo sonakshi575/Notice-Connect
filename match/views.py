@@ -9,5 +9,5 @@ def List_Matches(request):
     context={
         'matches':matches,
     }
-    return render(request,'match/match_list.html',context)
+    return render(request,'match/list_match.html',context)
 

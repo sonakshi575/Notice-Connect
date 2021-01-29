@@ -6,5 +6,8 @@ from match.views import List_Matches
 
 app_name = 'match'
 router = routers.DefaultRouter()
-urlpatterns = []
+urlpatterns = [
+    url(r'^listmatches/', List_Matches, name="list_matches")
+    # path('', List_Matches, name="home" )
+]
 urlpatterns += router.urls
