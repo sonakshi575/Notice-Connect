@@ -100,7 +100,7 @@ def Add_Record_Match(request):
 class Match_Algorithm(APIView):
     def post(self, request, data,*args, **kwargs):
 
-        print('Request',data)
+        # print('Request',data)
         try:
             user = request.user
         except:
@@ -165,22 +165,18 @@ class Match_Algorithm(APIView):
 
 def Create_Record(request):
     if request.method == 'POST':
-        print(request.POST.dict())
+        # print(request.POST.dict())
         form = RecordModelForm(request.POST)
         if form.is_valid():
             match_algorithm=Match_Algorithm()
             data=request.POST.dict()
             response=match_algorithm.post(request, data)
             match_response=json.loads(response.content)
-            # messages.success(request, 'Form submission successful')
-            # return HttpResponse(match_response)
+            return HttpResponse(json.dumps(match_response))
         else:
             context = {
                 'record':RecordModelForm(request.POST)
             }
-
-        print(request.POST.get('first_name'))
-        
     else:
         context = {
         'record':RecordModelForm(),
@@ -192,7 +188,7 @@ def Create_Record(request):
 
 
 def List_Records(request):
-    records =Record.objects.all().order_by('-record_id')
+    records =Record.objects.all().order_by('record_id')
     context={
         'records':records,
     }

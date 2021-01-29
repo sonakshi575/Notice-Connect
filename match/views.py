@@ -5,7 +5,7 @@ from match.models import Match
 
 
 def List_Matches(request):
-    matches =Match.objects.all().order_by('-match_id')
+    matches =Match.objects.all().order_by('match_id')
     context={
         'matches':matches,
     }

@@ -1,0 +1,38 @@
+from django.test import TestCase, Client
+from django.urls import reverse
+from match.models import Match
+from notice.models import Notice
+from record.models import Record
+from match.views import List_Matches
+import datetime
+
+
+class TestViews(TestCase):
+    def setUp(self):
+        self.client= Client()
+        self.list_notice_url = reverse('match:list_matches')
+        # self.delete_match_url = reverse('record:delete_match', args=['1'])
+        self.notice= Notice.objects.create(
+            first_name="John",
+            last_name="Smith",
+            alt_first_name="Jo",
+            alt_last_name="S",
+            province="Ontario",
+            date_of_birth=datetime.date(1989, 1, 1)
+        )
+        self.record=Record.objects.create(
+            first_name="John",
+            last_name="Smith",
+            province="Ontario",
+            date_of_birth=datetime.date(1989, 1, 1)
+        )
+
+        self.match= Match.objects.create(
+            record=self.record,
+            notice= self.notice,
+            match_type="Strong Match"
+        )
+    def test_match_list_get(self):
+        response= self.client.get(self.list_notice_url)
+        self.assertEquals(response.status_code, 200)
+        self.assertTemplateUsed(response, 'match/list_match.html')
