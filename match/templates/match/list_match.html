@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% comment %} {% load static %} {% endcomment %}
+{% block content %}
+
+  <div class="container-fluid" style="position: fixed;top: 80px;left: 0;right: 0;bottom: 0;overflow-y: scroll;" id="applications">
+        <div class="row" style="width: inherit;">
+                          <div class="btn-group" role="group">
+                            {% comment %} <a class='edit' style="color:#a4232c;padding:5px; margin-left: 10px;" title="Edit"
+                                data-toggle="tooltip"
+                             href="/dashboard"> 
+                                <i style="vertical-align: top;padding-bottom: 20px;height:40px;" class="material-icons">arrow_back</i>
+                            <!-- <span style="margin-top: 0px;">Calculate score</span> -->
+                           Calculate Score </a></div> {% endcomment %}
+        <div class="col" style="width: 100vw;height: 10px;padding-bottom:50px;padding-top: 20px;">
+                      
+                <h2 style=" width:90vw;text-align: center;font-size:25px;font-weight: bold;font-family:Varela Round;float:left;color:#002b50;">
+                    Match List
+                </h2>
+             
+        </div>
+    </div>
+    <div class="card-body">
+            <div class="row" style="width: inherit;" style="margin-left: 10px;margin-right: 10px;">
+                <div class="col-md-10 mx-auto rounded shadow text-center">
+                   
+                            <table class="table table-striped"  style="margin-left: 0px;margin-right: 0px;padding-top:10px">
+                                <thead>
+                                    <tr style="color: white;background-color:#002b50;">
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">Record ID
+                                        </th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                           Notice Id</th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                            Match Type</th>
+
+                                        <!-- <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">Resume
+                                        </th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                            Assignment</th>
+                                        <th class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;" scope="col">
+                                            Matching Score</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for match in matches  %}
+                                    <tr>
+                                        <td class="text-uppercase"
+                                            style="font-family:Varela Round;font-size: 15px;">
+                                            {{ match.record.record_id }}</td>
+
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                            {{ match.notice.notice_id }}</td>
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                             {{ match.match_type }}
+                                        </td>
+                                        <!-- <td style="font-family:Varela Round;font-size: 15px;">
+                                            {{ applicant.assignment_name }}</td>
+                                        <td style="font-family:Varela Round;font-size: 15px;">
+                                            {{ applicant.score }}</td> -->
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                
+            
+        </div>
+    
+</div>
+{% endblock %}

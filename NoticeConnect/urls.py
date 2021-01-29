@@ -19,14 +19,18 @@ from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from match.views import List_Matches
+from record.views import Create_Record
 
 app_name = 'noticeconnect'
 
 urlpatterns = [
+    path('',Create_Record, name='create_record'),
     path('admin/', admin.site.urls),
     path('', include('notice.urls')),
     path('', include('record.urls')),
     path('', include('match.urls')),
+    # path('', List_Matches, name="home" )
     # path('api-auth',include('rest_framework.urls')),
 ]
 urlpatterns += staticfiles_urlpatterns()
