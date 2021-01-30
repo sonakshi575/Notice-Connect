@@ -7,7 +7,7 @@ from match.views import List_Matches
 app_name = 'match'
 router = routers.DefaultRouter()
 urlpatterns = [
-    url(r'^listmatches/', List_Matches, name="list_matches")
+    url(r'^listmatches/', List_Matches, name="list_matches"),
 ]
 urlpatterns += router.urls
 

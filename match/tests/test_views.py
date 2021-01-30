@@ -10,7 +10,7 @@ import datetime
 class TestViews(TestCase):
     def setUp(self):
         self.client= Client()
-        self.list_notice_url = reverse('match:list_matches')
+        self.list_match_url = reverse('match:list_matches')
         # self.delete_match_url = reverse('record:delete_match', args=['1'])
         self.notice= Notice.objects.create(
             first_name="John",
@@ -33,6 +33,6 @@ class TestViews(TestCase):
             match_type="Strong Match"
         )
     def test_match_list_get(self):
-        response= self.client.get(self.list_notice_url)
+        response= self.client.get(self.list_match_url)
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'match/list_match.html')
