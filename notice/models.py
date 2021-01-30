@@ -1,9 +1,17 @@
 from django.db import models
 
-# Create your models here.
-
+# Create your Notice Model here.
 class Notice(models.Model):
-    """ Create Notice model"""
+    """ Create Notice model
+
+        notice id - primary key
+        first_name - required
+        last_name -required
+        alt_first_name - optional
+        alt_last_name - optional
+        province - required
+        date_of_birth - date format (yyy-mm-dd)
+    """
     notice_id = models.AutoField(primary_key=True,auto_created=True, verbose_name='notice id')
     first_name = models.CharField(max_length=255,null=False, verbose_name='first name')
     last_name = models.CharField(max_length=255,null=False, verbose_name='last name')

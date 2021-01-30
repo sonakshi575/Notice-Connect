@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Record
-# Register your models here.
+
+
+# Register Record models here.
 
 admin.site.register(Record)

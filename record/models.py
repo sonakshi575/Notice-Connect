@@ -1,8 +1,14 @@
 from django.db import models
 
-# Create your models here.
+# Create your Record model here.
 class Record(models.Model):
-    """ Create record model"""
+    """ Create record model
+        record id - primary key
+        first_name - required
+        last_name -required
+        province - required
+        date_of_birth - date format (yyy-mm-dd)
+    """
     record_id = models.AutoField(primary_key=True,auto_created=True, verbose_name='notice id')
     first_name = models.CharField(max_length=255,null=False, verbose_name='first name')
     last_name = models.CharField(max_length=255,null=False, verbose_name='last name')

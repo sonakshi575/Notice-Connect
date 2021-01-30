@@ -5,8 +5,11 @@ from match.models import Match
 import datetime
 import mock
 
+#Class View to  test mdeols
 class TestMatchModels(TestCase):
+
     def setUp(self):
+         #Creating Notice Obj
         self.notice= Notice.objects.create(
             first_name="John",
             last_name="Smith",
@@ -15,13 +18,14 @@ class TestMatchModels(TestCase):
             province="Ontario",
             date_of_birth=datetime.date(1989, 1, 1)
         )
+        #Creating Record Obj 
         self.record=Record.objects.create(
             first_name="John",
             last_name="Smith",
             province="Ontario",
             date_of_birth=datetime.date(1989, 1, 1)
         )
-
+        #Creating Match Obj 
         self.match= Match.objects.create(
             record=self.record,
             notice= self.notice,

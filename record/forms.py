@@ -2,6 +2,7 @@ from django import forms
 from record.models import Record
 from django.forms import DateInput
 
+'''Record Forms'''
 class RecordModelForm(forms.ModelForm):
     
     class Meta:
