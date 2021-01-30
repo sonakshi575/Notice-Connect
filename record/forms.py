@@ -10,3 +10,6 @@ class RecordModelForm(forms.ModelForm):
         widgets = {
             'date_of_birth': DateInput(attrs={'type': 'date'})
         }
+
+
+

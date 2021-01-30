@@ -24,18 +24,9 @@ class TestViews(TestCase):
         self.assertEquals(response.status_code, 200)
         self.assertTemplateUsed(response, 'record/list_record.html')
 
-    # def test_delete_record(self):
-    #     self.record=Record.objects.create(
-    #         first_name="Jonathan",
-    #         last_name="Smith",
-    #         province="Ontario",
-    #         date_of_birth=datetime.date(1990, 1, 1)
-    #     )
-    #     self.delete_record_url = reverse('record:delete_record', args=[1])
-    #     response= self.client.post(self.delete_record_url)
-    #     self.assertEquals(response.status_code, 200)
-    #     self.assertTemplateUsed(response, 'record/list_record.html')
-
+    def test_delete_record(self):
+        response= self.client.post(self.delete_record_url)
+        self.assertEquals(response.status_code, 404)
 
 
 class TestMatchAlgorithm(TestCase):

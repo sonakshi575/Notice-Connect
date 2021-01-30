@@ -17,7 +17,7 @@ from rest_framework import status
 from .forms import RecordModelForm
 from rest_framework.views import APIView
 from django.contrib import messages
-
+from django.shortcuts import get_list_or_404, get_object_or_404
 # Create your views here.
 @api_view(['POST'])
 def Add_Record_Match(request):
@@ -85,14 +85,11 @@ def Add_Record_Match(request):
             returnValue['record_id'] = add_row_match.record_id
             returnValue['match_type'] = add_row_match.match_type
         else:
-            pass
+            returnValue['match_type'] = "NO MATCH FOUND"
     except:
         return Response("COULD NOT ADD ROW IN MATCH TABLE")
     
     return Response(returnValue,status=status.HTTP_200_OK )
-
-
-
 
 
 
@@ -154,7 +151,7 @@ class Match_Algorithm(APIView):
                 returnValue['match_type'] = add_row_match.match_type
                 
             else:
-                Response("NO MATCH FOUND")
+                 returnValue['match_type'] = "NO MATCH FOUND"
         except:
             return Response("COULD NOT ADD ROW IN MATCH TABLE")
         
@@ -173,6 +170,7 @@ def Create_Record(request):
             response=match_algorithm.post(request, data)
             match_response=json.loads(response.content)
             return HttpResponse(json.dumps(match_response))
+            # return render(request,'record/display_match.html',context)
         else:
             context = {
                 'record':RecordModelForm(request.POST)
@@ -198,8 +196,10 @@ def List_Records(request):
 
 
 def Delete_Record(request, record_id):
-    query = Record.objects.get(pk=record_id)
-    query.delete()
+    # fetch the object related to record id 
+    obj = get_object_or_404(Record, record_id = record_id) 
+    # delete object 
+    obj.delete() 
     records =Record.objects.all().order_by('record_id')
     context={
         'records':records,
