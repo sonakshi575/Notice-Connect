@@ -1,4 +1,5 @@
 # Notice-Connect
+
 Django application to categorize Record as Strong match, Possible match or Weak match based off below Match Algorithm conditions:
 
 1. Strong Match:
@@ -13,5 +14,5 @@ Django application to categorize Record as Strong match, Possible match or Weak 
  - Only first_name and last_name are matching
 
 
+Python Version 3.7.4
 
-## Python Version 3.7.4
