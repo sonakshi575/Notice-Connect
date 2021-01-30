@@ -33,8 +33,11 @@ class TestMatchAlgorithm(TestCase):
     """ Test module for inserting a new record through rest api """
 
     def setUp(self):
+        # Every test needs access to the Client.
         self.client= Client()
+        # create record  url reversed
         self.create_record_url = reverse('create_record')
+        #Creating notice Obj 
         self.notice= Notice.objects.create(
             first_name="John",
             last_name="Smith",
@@ -43,24 +46,28 @@ class TestMatchAlgorithm(TestCase):
             province="Ontario",
             date_of_birth=datetime.date(1989, 1, 1)
         )
+        #Creating obj to be categorized as strong match 
         self.strong_match = {
             'first_name': 'John',
             'last_name': 'Smith',
             'province': 'Ontario',
             'date_of_birth': '1989-01-01'
         }
+        #Creating obj to be categorized as possible match 
         self.possible_match = {
             'first_name': 'John',
             'last_name': 'Smith',
             'province': 'Ontario',
             'date_of_birth': '1999-01-01'
         }
+        #Creating obj to be categorized as weak match 
         self.weak_match = {
             'first_name': 'John',
             'last_name': 'Smith',
             'province': 'Quebec',
             'date_of_birth': '1948-01-01'
         }
+        #Creating obj to be categorized as no match 
         self.no_match = {
             'first_name': 'Juanana',
             'last_name': 'Willam',
@@ -69,12 +76,14 @@ class TestMatchAlgorithm(TestCase):
         }
 
     def test_create_strong_match_record(self):
+        """Unit test to create record and insert in match model categorized as strong match"""
         response = self.client.post(self.create_record_url,data=self.strong_match)
         reponse_obj=json.loads(response.content)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertEqual(reponse_obj['match_type'], 'Strong Match')
 
     def test_create_possible_match_record(self):
+         """Unit test to create record and insert in match model categorized as possible match"""
         response = self.client.post(self.create_record_url,data=self.possible_match)
         reponse_obj=json.loads(response.content)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
@@ -82,14 +91,15 @@ class TestMatchAlgorithm(TestCase):
 
 
     def test_create_weak_match_record(self):
+         """Unit test to create record and insert in match model categorized as weak match"""
         response = self.client.post(self.create_record_url,data=self.weak_match)
         reponse_obj=json.loads(response.content)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertEqual(reponse_obj['match_type'], 'Weak Match')
 
     def test_no_match_record(self):
+         """Unit test to create record and insert in match model categorized as no match"""
         response = self.client.post(self.create_record_url,data=self.no_match)
         reponse_obj=json.loads(response.content)
-        # print("No match",reponse_obj)
         self.assertEquals(response.status_code, status.HTTP_200_OK)
         self.assertEqual(reponse_obj,{})
